@@ -1,7 +1,16 @@
 #~/bin/bash
 
 amp() { export AWS_PROFILE="$1"; }
-amr() { export AWS_REGION="$1"; }
+amr() { export AWS_REGION="$1"; export AWS_DEFAULT_REGION="$1"; }
+amc() {
+    unset AWS_REGION
+    unset AWS_PROFILE
+    unset AWS_DEFAULT_REGION
+    unset AWS_DEFAULT_PROFILE
+    unset AWS_ACCESS_KEY_ID
+    unset AWS_SECRET_ACCESS_KEY
+    unset AWS_SESSION_TOKEN
+}
 
 _regions() {
   local cur=${COMP_WORDS[COMP_CWORD]}
